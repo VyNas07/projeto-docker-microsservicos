@@ -17,7 +17,8 @@ Write-Host "[1/6] Criando volume Docker..." -ForegroundColor Blue
 $volumeExists = docker volume inspect $VOLUME_NAME 2>$null
 if ($volumeExists) {
     Write-Host "Volume $VOLUME_NAME ja existe." -ForegroundColor Yellow
-} else {
+}
+else {
     docker volume create $VOLUME_NAME
     Write-Host "Volume criado com sucesso!" -ForegroundColor Green
 }
@@ -27,7 +28,8 @@ Write-Host "[2/6] Criando rede Docker..." -ForegroundColor Blue
 $networkExists = docker network inspect $NETWORK_NAME 2>$null
 if ($networkExists) {
     Write-Host "Rede $NETWORK_NAME ja existe." -ForegroundColor Yellow
-} else {
+}
+else {
     docker network create $NETWORK_NAME
     Write-Host "Rede criada com sucesso!" -ForegroundColor Green
 }

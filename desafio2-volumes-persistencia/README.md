@@ -38,6 +38,7 @@ Demonstração de persistência de dados usando volumes Docker. Container Postgr
 ### Volumes vs Bind Mounts
 
 **Volumes Docker:**
+
 - Gerenciados pelo Docker
 - Armazenados em área específica do host
 - Melhor performance
@@ -45,6 +46,7 @@ Demonstração de persistência de dados usando volumes Docker. Container Postgr
 - Usado neste projeto
 
 **Bind Mounts:**
+
 - Caminho específico no host
 - Dependente do sistema de arquivos
 - Acesso direto aos arquivos
@@ -86,17 +88,20 @@ desafio2-volumes-persistencia/
 ### Setup Inicial
 
 Windows:
+
 ```powershell
 .\scripts\setup.ps1
 ```
 
 Linux/Mac:
+
 ```bash
 chmod +x scripts/*.sh
 ./scripts/setup.sh
 ```
 
 Este comando:
+
 1. Cria volume nomeado `desafio2-postgres-data`
 2. Cria rede `desafio2-network`
 3. Constrói imagem PostgreSQL com dados iniciais
@@ -114,16 +119,19 @@ docker run --rm --network desafio2-network -e POSTGRES_HOST=desafio2-postgres de
 Este é o comando principal que demonstra a persistência:
 
 Windows:
+
 ```powershell
 .\scripts\test-persistence.ps1
 ```
 
 Linux/Mac:
+
 ```bash
 ./scripts/test-persistence.sh
 ```
 
 O script:
+
 1. Consulta dados antes da remoção
 2. Para e remove o container PostgreSQL
 3. Recria o container usando o mesmo volume
@@ -235,6 +243,7 @@ O arquivo `init.sql` é executado automaticamente na primeira inicialização at
 ### Persistência Garantida
 
 Mesmo após:
+
 - Parar o container
 - Remover o container
 - Recriar o container
