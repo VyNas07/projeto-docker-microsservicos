@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # Microsserviço A: API de usuários
+  servico-usuarios:
+    build:
+      context: ./servico-usuarios
+      dockerfile: Dockerfile
+    container_name: desafio4-usuarios
+    ports:
+      - "5001:5001"
+    networks:
+      - desafio4-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  # Microsserviço B: Agregador de dados
+  servico-agregador:
+    build:
+      context: ./servico-agregador
+      dockerfile: Dockerfile
+    container_name: desafio4-agregador
+    environment:
+      USERS_SERVICE_URL: http://servico-usuarios:5001
+    ports:
+      - "5002:5002"
+    networks:
+      - desafio4-network
+    depends_on:
+      servico-usuarios:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5002/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+networks:
+  desafio4-network:
+    name: desafio4-network
+    driver: bridge

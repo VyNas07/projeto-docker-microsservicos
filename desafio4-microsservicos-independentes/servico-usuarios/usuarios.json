@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "username": "jsilva",
+        "email": "joao.silva@empresa.com",
+        "full_name": "João Silva",
+        "role": "Developer",
+        "active": true,
+        "registration_date": "2024-01-15"
+    },
+    {
+        "id": 2,
+        "username": "mcoста",
+        "email": "maria.costa@empresa.com",
+        "full_name": "Maria Costa",
+        "role": "Designer",
+        "active": true,
+        "registration_date": "2024-02-20"
+    },
+    {
+        "id": 3,
+        "username": "psantos",
+        "email": "pedro.santos@empresa.com",
+        "full_name": "Pedro Santos",
+        "role": "DevOps",
+        "active": true,
+        "registration_date": "2024-03-10"
+    },
+    {
+        "id": 4,
+        "username": "aolive",
+        "email": "ana.oliveira@empresa.com",
+        "full_name": "Ana Oliveira",
+        "role": "QA",
+        "active": false,
+        "registration_date": "2023-11-05"
+    },
+    {
+        "id": 5,
+        "username": "rlima",
+        "email": "ricardo.lima@empresa.com",
+        "full_name": "Ricardo Lima",
+        "role": "Developer",
+        "active": true,
+        "registration_date": "2024-04-12"
+    },
+    {
+        "id": 6,
+        "username": "cferr",
+        "email": "carla.ferreira@empresa.com",
+        "full_name": "Carla Ferreira",
+        "role": "Product Manager",
+        "active": true,
+        "registration_date": "2023-12-01"
+    },
+    {
+        "id": 7,
+        "username": "lmartins",
+        "email": "lucas.martins@empresa.com",
+        "full_name": "Lucas Martins",
+        "role": "Security",
+        "active": true,
+        "registration_date": "2024-05-18"
+    },
+    {
+        "id": 8,
+        "username": "jrodrig",
+        "email": "julia.rodrigues@empresa.com",
+        "full_name": "Julia Rodrigues",
+        "role": "Designer",
+        "active": true,
+        "registration_date": "2024-06-22"
+    },
+    {
+        "id": 9,
+        "username": "falves",
+        "email": "felipe.alves@empresa.com",
+        "full_name": "Felipe Alves",
+        "role": "DevOps",
+        "active": false,
+        "registration_date": "2023-10-15"
+    },
+    {
+        "id": 10,
+        "username": "bcarvalho",
+        "email": "beatriz.carvalho@empresa.com",
+        "full_name": "Beatriz Carvalho",
+        "role": "Developer",
+        "active": true,
+        "registration_date": "2024-07-30"
+    }
+]
