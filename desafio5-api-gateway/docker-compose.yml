@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  # Microsserviço 1: Serviço de Usuários
+  servico-usuarios:
+    build:
+      context: ./servico-usuarios
+      dockerfile: Dockerfile
+    container_name: desafio5-usuarios
+    networks:
+      - desafio5-internal
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+    # Porta NÃO exposta externamente
+
+  # Microsserviço 2: Serviço de Pedidos
+  servico-pedidos:
+    build:
+      context: ./servico-pedidos
+      dockerfile: Dockerfile
+    container_name: desafio5-pedidos
+    networks:
+      - desafio5-internal
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5002/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+    # Porta NÃO exposta externamente
+
+  # API Gateway: Ponto único de entrada
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    container_name: desafio5-gateway
+    environment:
+      USERS_SERVICE_URL: http://servico-usuarios:5001
+      ORDERS_SERVICE_URL: http://servico-pedidos:5002
+    ports:
+      - "8080:8080"
+    networks:
+      - desafio5-internal
+    depends_on:
+      servico-usuarios:
+        condition: service_healthy
+      servico-pedidos:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+networks:
+  desafio5-internal:
+    name: desafio5-internal
+    driver: bridge
