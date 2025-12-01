@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  # Serviço de banco de dados PostgreSQL
+  db:
+    image: postgres:15-alpine
+    container_name: desafio3-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-desafio3}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres123}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - desafio3-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Serviço de cache Redis
+  cache:
+    image: redis:7-alpine
+    container_name: desafio3-redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    networks:
+      - desafio3-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+  # Serviço web (API Flask)
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: desafio3-web
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_DB: ${POSTGRES_DB:-desafio3}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres123}
+      REDIS_HOST: cache
+      REDIS_PORT: 6379
+      FLASK_ENV: development
+    ports:
+      - "5000:5000"
+    networks:
+      - desafio3-network
+    depends_on:
+      db:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    name: desafio3-postgres-data
+  redis_data:
+    name: desafio3-redis-data
+
+networks:
+  desafio3-network:
+    name: desafio3-network
+    driver: bridge
