@@ -159,6 +159,7 @@ curl http://localhost:8080/
 ```
 
 **Resposta:**
+
 ```json
 {
   "service": "API Gateway",
@@ -184,6 +185,7 @@ curl http://localhost:8080/users
 ```
 
 **Resposta:**
+
 ```json
 {
   "total": 5,
@@ -206,6 +208,7 @@ curl http://localhost:8080/users/1
 ```
 
 **Resposta:**
+
 ```json
 {
   "id": 1,
@@ -224,6 +227,7 @@ curl http://localhost:8080/orders
 ```
 
 **Resposta:**
+
 ```json
 {
   "total": 8,
@@ -254,6 +258,7 @@ curl http://localhost:8080/orders/user/1
 ```
 
 **Resposta:**
+
 ```json
 {
   "user_id": 1,
@@ -286,6 +291,7 @@ curl http://localhost:8080/users/1/orders
 ```
 
 **Resposta:**
+
 ```json
 {
   "user": {
@@ -328,6 +334,7 @@ curl http://localhost:8080/users/1/orders
 ```
 
 **O que acontece internamente:**
+
 1. Gateway recebe requisição em `/users/1/orders`
 2. Gateway faz requisição para `servico-usuarios:5001/users/1`
 3. Gateway faz requisição para `servico-pedidos:5002/orders/user/1`
@@ -341,6 +348,7 @@ curl http://localhost:8080/health
 ```
 
 **Resposta:**
+
 ```json
 {
   "gateway": {
@@ -463,6 +471,7 @@ curl $base/health
 ### Tratamento de Erros
 
 Gateway trata:
+
 - Timeout de serviços (504)
 - Serviços indisponíveis (503)
 - Erros genéricos (500)
@@ -471,6 +480,7 @@ Gateway trata:
 ### Logs Centralizados
 
 Gateway registra:
+
 - Timestamp de cada requisição
 - Método e path
 - Serviço downstream alvo

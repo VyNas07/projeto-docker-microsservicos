@@ -1,42 +1,42 @@
 [
-  {
-    "id": 1,
-    "username": "jsilva",
-    "email": "joao.silva@empresa.com",
-    "full_name": "João Silva",
-    "department": "TI",
-    "status": "active"
-  },
-  {
-    "id": 2,
-    "username": "mcoста",
-    "email": "maria.costa@empresa.com",
-    "full_name": "Maria Costa",
-    "department": "Vendas",
-    "status": "active"
-  },
-  {
-    "id": 3,
-    "username": "psantos",
-    "email": "pedro.santos@empresa.com",
-    "full_name": "Pedro Santos",
-    "department": "Operações",
-    "status": "active"
-  },
-  {
-    "id": 4,
-    "username": "aolive",
-    "email": "ana.oliveira@empresa.com",
-    "full_name": "Ana Oliveira",
-    "department": "Marketing",
-    "status": "inactive"
-  },
-  {
-    "id": 5,
-    "username": "rlima",
-    "email": "ricardo.lima@empresa.com",
-    "full_name": "Ricardo Lima",
-    "department": "TI",
-    "status": "active"
-  }
+    {
+        "id": 1,
+        "username": "jsilva",
+        "email": "joao.silva@empresa.com",
+        "full_name": "João Silva",
+        "department": "TI",
+        "status": "active"
+    },
+    {
+        "id": 2,
+        "username": "mcoста",
+        "email": "maria.costa@empresa.com",
+        "full_name": "Maria Costa",
+        "department": "Vendas",
+        "status": "active"
+    },
+    {
+        "id": 3,
+        "username": "psantos",
+        "email": "pedro.santos@empresa.com",
+        "full_name": "Pedro Santos",
+        "department": "Operações",
+        "status": "active"
+    },
+    {
+        "id": 4,
+        "username": "aolive",
+        "email": "ana.oliveira@empresa.com",
+        "full_name": "Ana Oliveira",
+        "department": "Marketing",
+        "status": "inactive"
+    },
+    {
+        "id": 5,
+        "username": "rlima",
+        "email": "ricardo.lima@empresa.com",
+        "full_name": "Ricardo Lima",
+        "department": "TI",
+        "status": "active"
+    }
 ]
